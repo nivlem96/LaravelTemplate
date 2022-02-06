@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{env('APP_NAME')}}</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="<?php echo asset('css/app.css')?>" rel="stylesheet" type="text/css">
 </head>
@@ -18,9 +18,9 @@
                     @csrf <!-- {{ csrf_field() }} -->
                         <label for="locale">Locale:</label>
                         <select class="" id="locale" name="locale" onchange="this.form.submit()">
-                            <option value=""></option>
-                            <option value="en">{{__('app.language.en')}}</option>
-                            <option value="nl">{{__('app.language.nl')}}</option>
+                            @foreach(\App\Helpers\LanguageHelper::getSupportedLanguages() as $language)
+                                <option value="{{$language}}" {{ app()->getLocale() === $language ? "selected" : "" }}>{{__('app.language.' . $language)}}</option>
+                            @endforeach
                         </select>
                     </form>
                 </li>
