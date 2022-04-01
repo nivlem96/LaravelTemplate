@@ -24,6 +24,14 @@
                         </select>
                     </form>
                 </li>
+                @if(\Illuminate\Support\Facades\Auth::hasUser())
+
+                    <li><a href="/dashboard">@lang('app.page.dashboard')</a></li>
+                    <li><a href="/signOut">@lang('app.page.sign_out')</a></li>
+                @else
+                    <li><a href="/login">@lang('app.page.login')</a></li>
+                    <li><a href="/register">@lang('app.page.register')</a></li>
+                @endif
             </ul>
         </div>
         @yield('content')

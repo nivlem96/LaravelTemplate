@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthenticateController;
+use App\Http\Controllers\AuthenticatedController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'home']);
 
 Route::post('/locale', function () {
-
     session(['app.locale' => app('request')->input('locale', 'en')]);
 
     return redirect()->back();
 });
+
+Route::get('/login', [PublicController::class, 'login']);
+Route::post('/login', [AuthenticateController::class, 'login']);
+Route::get('/register', [PublicController::class, 'register']);
+Route::post('/register', [AuthenticateController::class, 'register']);
+
+Route::get('/dashboard', [AuthenticatedController::class, 'dashboard']);
+Route::get('/signOut', [AuthenticatedController::class, 'signOut']);
