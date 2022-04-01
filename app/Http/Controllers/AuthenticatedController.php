@@ -9,11 +9,7 @@ class AuthenticatedController extends Controller
 {
     public function dashboard()
     {
-        if (Auth::check()) {
-            return view('dashboard');
-        }
-
-        return redirect("login")->withSuccess('are not allowed to access');
+        return view('dashboard');
     }
 
 

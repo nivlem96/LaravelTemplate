@@ -24,10 +24,12 @@ Route::post('/locale', function () {
     return redirect()->back();
 });
 
-Route::get('/login', [PublicController::class, 'login']);
+Route::get('/login', [PublicController::class, 'login'])->name('login');
 Route::post('/login', [AuthenticateController::class, 'login']);
 Route::get('/register', [PublicController::class, 'register']);
 Route::post('/register', [AuthenticateController::class, 'register']);
 
-Route::get('/dashboard', [AuthenticatedController::class, 'dashboard']);
-Route::get('/signOut', [AuthenticatedController::class, 'signOut']);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [AuthenticatedController::class, 'dashboard']);
+    Route::get('/signOut', [AuthenticatedController::class, 'signOut']);
+});
