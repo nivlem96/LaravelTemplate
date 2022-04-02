@@ -13,7 +13,6 @@ return [
         'home' => 'Home',
         'login' => 'Login',
         'register' => 'Register',
-        'dashboard' => 'Dashboard',
         'sign_out' => 'Sign out',
     ],
     'label' => [

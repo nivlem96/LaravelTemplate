@@ -12,7 +12,6 @@ return [
     'page' => [
         'home' => 'Home',
         'login' => 'Inloggen',
-        'register' => 'Registreren',
         'dashboard' => 'Dashboard',
         'sign_out' => 'Uitloggen',
     ],

@@ -25,8 +25,8 @@
                     </form>
                 </li>
                 <li><a href="{{route('home')}}">@lang('app.page.home')</a></li>
-                @if(\Illuminate\Support\Facades\Auth::hasUser())
-                    <li><a href="{{route('dashboard')}}">@lang('app.page.dashboard')</a></li>
+                @if(\Illuminate\Support\Facades\Auth::user() !== null)
+                    <li><a href="{{route('dashboard')}}">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
                     <li><a href="{{route('signOut')}}">@lang('app.page.sign_out')</a></li>
                 @else
                     <li><a href="{{route('login')}}">@lang('app.page.login')</a></li>
