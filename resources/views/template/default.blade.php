@@ -14,7 +14,7 @@
         <div @class(['nav-bar'])>
             <ul @class(['nav-bar-nav'])>
                 <li @class(['nav-item'])>
-                    <form @class(['locale']) action="{{url('/locale')}}" method="post">
+                    <form @class(['locale']) action="{{route('localePost')}}" method="post">
                     @csrf <!-- {{ csrf_field() }} -->
                         <label for="locale">Locale:</label>
                         <select class="" id="locale" name="locale" onchange="this.form.submit()">
@@ -24,13 +24,13 @@
                         </select>
                     </form>
                 </li>
+                <li><a href="{{route('home')}}">@lang('app.page.home')</a></li>
                 @if(\Illuminate\Support\Facades\Auth::hasUser())
-
-                    <li><a href="/dashboard">@lang('app.page.dashboard')</a></li>
-                    <li><a href="/signOut">@lang('app.page.sign_out')</a></li>
+                    <li><a href="{{route('dashboard')}}">@lang('app.page.dashboard')</a></li>
+                    <li><a href="{{route('signOut')}}">@lang('app.page.sign_out')</a></li>
                 @else
-                    <li><a href="/login">@lang('app.page.login')</a></li>
-                    <li><a href="/register">@lang('app.page.register')</a></li>
+                    <li><a href="{{route('login')}}">@lang('app.page.login')</a></li>
+                    <li><a href="{{route('register')}}">@lang('app.page.register')</a></li>
                 @endif
             </ul>
         </div>

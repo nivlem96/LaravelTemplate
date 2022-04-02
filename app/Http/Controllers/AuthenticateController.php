@@ -20,11 +20,11 @@ class AuthenticateController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard')
+            return redirect()->route('dashboard')
                              ->withSuccess('Signed in');
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect()->route('login')->withSuccess('Login details are not valid');
     }
 
     public function register(Request $request)
@@ -38,7 +38,7 @@ class AuthenticateController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("/dashboard")->withSuccess('have signed-in');
+        return redirect()->route('dashboard')->withSuccess('have signed-in');
     }
 
     public function create(array $data)

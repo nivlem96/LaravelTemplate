@@ -15,16 +15,18 @@ class Controller extends BaseController
     /**
      * Execute an action on the controller.
      *
-     * @param string $method
-     * @param array  $parameters
+     * @param  string  $method
+     * @param  array  $parameters
      *
      * @return Response
      */
     public function callAction($method, $parameters)
     {
-        if (session('app.locale') !== null) {
-            app()->setLocale(session('app.locale'));
+        $sessionLocale = session('app.locale');
+        if ($sessionLocale !== null && app()->getLocale() !== $sessionLocale) {
+            app()->setLocale($sessionLocale);
         }
+
         return $this->{$method}(...array_values($parameters));
     }
 }

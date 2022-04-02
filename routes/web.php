@@ -16,20 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PublicController::class, 'home']);
+Route::get('/', [PublicController::class, 'home'])->name('home');
 
 Route::post('/locale', function () {
-    session(['app.locale' => app('request')->input('locale', 'en')]);
+    session(['app.locale' => app('request')->input('locale', config('app.locale'))]);
 
     return redirect()->back();
-});
+})->name('localePost');
 
 Route::get('/login', [PublicController::class, 'login'])->name('login');
-Route::post('/login', [AuthenticateController::class, 'login']);
-Route::get('/register', [PublicController::class, 'register']);
-Route::post('/register', [AuthenticateController::class, 'register']);
+Route::post('/login', [AuthenticateController::class, 'login'])->name('loginPost');
+Route::get('/register', [PublicController::class, 'register'])->name('register');
+Route::post('/register', [AuthenticateController::class, 'register'])->name('registerPost');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [AuthenticatedController::class, 'dashboard']);
-    Route::get('/signOut', [AuthenticatedController::class, 'signOut']);
+    Route::get('/dashboard', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
+    Route::get('/signOut', [AuthenticatedController::class, 'signOut'])->name('signOut');
 });

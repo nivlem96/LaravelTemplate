@@ -1,7 +1,7 @@
 @extends('template.default')
 @section('content')
     <div @class(['content','login'])>
-        <form action="/login" method="post">
+        <form action="{{route('loginPost')}}" method="post">
         @csrf <!-- {{ csrf_field() }} -->
             <table>
                 <tr>
