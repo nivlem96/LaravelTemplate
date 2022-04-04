@@ -20,4 +20,14 @@ class PublicController extends BaseController
     {
         return view('register');
     }
+
+    public function forgotPassword()
+    {
+        return view('forgot-password');
+    }
+
+    public function resetPassword(string $token)
+    {
+        return view('reset-password', ['token' => $token]);
+    }
 }
