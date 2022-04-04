@@ -13,21 +13,21 @@ class PublicController extends BaseController
 
     public function login()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function register()
     {
-        return view('register');
+        return view('auth.register');
     }
 
     public function forgotPassword()
     {
-        return view('forgot-password');
+        return view('auth.forgot-password');
     }
 
     public function resetPassword(string $token)
     {
-        return view('reset-password', ['token' => $token]);
+        return view('auth.reset-password', ['token' => $token]);
     }
 }

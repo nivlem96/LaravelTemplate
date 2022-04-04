@@ -18,6 +18,10 @@ return [
     'label' => [
         'name' => 'Name',
         'password' => 'Password',
+        'password_confirmation' => 'Password confirmation',
         'email' => 'Email',
+    ],
+    'password' => [
+        'forgot' => 'Forgot password',
     ],
 ];

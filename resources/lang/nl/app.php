@@ -18,6 +18,10 @@ return [
     'label' => [
         'name' => 'Naam',
         'password' => 'Wachtwoord',
+        'password_confirmation' => 'Wachtwoord bevestigen',
         'email' => 'E-mail',
+    ],
+    'password' => [
+        'forgot' => 'Wachtwoord vergeten',
     ],
 ];
