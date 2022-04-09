@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        foreach (Role::getDefaultRoles() as $role) {
+        foreach (Role::getAllRoles() as $role) {
             if (Role::query()->where('title', $role)->first() !== null) {
                 continue;
             }

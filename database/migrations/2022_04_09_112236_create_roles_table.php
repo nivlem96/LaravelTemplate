@@ -13,11 +13,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->unsignedInteger('id')->autoIncrement();
-            $table->string('title');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('roles')) {
+            Schema::create('roles', function (Blueprint $table) {
+                $table->unsignedInteger('id')->autoIncrement();
+                $table->string('title');
+                $table->timestamps();
+            });
+        }
         $seeder = new RoleSeeder();
         $seeder->run();
     }
