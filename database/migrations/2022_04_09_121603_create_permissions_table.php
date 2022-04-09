@@ -1,6 +1,5 @@
 <?php
 
-use Database\Seeders\PermissionSeeder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,9 +20,6 @@ return new class extends Migration {
                 $table->timestamps();
             });
         }
-
-        $seeder = new PermissionSeeder();
-        $seeder->run();
     }
 
     /**
