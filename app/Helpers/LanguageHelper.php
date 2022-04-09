@@ -4,12 +4,13 @@ namespace App\Helpers;
 
 class LanguageHelper
 {
-    private static $_supportedLanguages =[
+    private static array $_supportedLanguages = [
         'nl',
         'en',
     ];
 
-    static function getSupportedLanguages(){
+    static function getSupportedLanguages(): array
+    {
         return self::$_supportedLanguages;
     }
 }
