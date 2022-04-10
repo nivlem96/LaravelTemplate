@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -29,9 +28,21 @@ class TestCommand extends Command
     {
         /** @var User $user */
         $user = User::find(1);
-        foreach ($user->getPermissions() as $permission) {
-            /** @var Permission $permission */
-            echo $permission->model . '.' . $permission->key . PHP_EOL;
+
+        if ($user->can('user.access')) {
+            echo $user->name . ' can access himself' . PHP_EOL;
+        }
+
+        if ($user->can('user.update')) {
+            echo $user->name . ' can update himself' . PHP_EOL;
+        }
+
+        if ($user->can('user.access_other')) {
+            echo $user->name . ' can access other users' . PHP_EOL;
+        }
+
+        if ($user->cant('user.access_other')) {
+            echo $user->name . ' cannot access other users' . PHP_EOL;
         }
     }
 }
