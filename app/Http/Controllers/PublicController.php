@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller as BaseController;
-
-class PublicController extends BaseController
+class PublicController extends Controller
 {
     public function home()
     {
