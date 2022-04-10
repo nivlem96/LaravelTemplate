@@ -27,6 +27,9 @@
                 <li><a href="{{route('home')}}">@lang('app.page.home')</a></li>
                 @if(\Illuminate\Support\Facades\Auth::user() !== null)
                     <li><a href="{{route('dashboard')}}">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->can(['user',\App\Models\Permission::KEY_ACCESS_OTHER]))
+                        <li><a href="{{route('users')}}">@lang('app.page.users')</a></li>
+                    @endif
                     <li><a href="{{route('signOut')}}">@lang('app.page.sign_out')</a></li>
                 @else
                     <li><a href="{{route('login')}}">@lang('app.page.login')</a></li>

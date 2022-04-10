@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\AuthenticatedController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,4 +40,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
     Route::get('/signOut', [AuthenticatedController::class, 'signOut'])->name('signOut');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    
+    Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
 });

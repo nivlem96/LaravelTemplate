@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\PermissionHelper;
 use App\Interfaces\HasPermissions;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @property-read Role $role
  * @property-read Collection|Permission[] $permissions
+ * @property-read Collection|Permission[] $userPermissions
  */
 class User extends Authenticatable implements HasPermissions
 {
@@ -73,16 +75,31 @@ class User extends Authenticatable implements HasPermissions
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public function getPermissions(): Collection
+    public function can($abilities, $arguments = []): bool
     {
-        $rolePermissions = $this->role->permissions;
-        $userPermissions = $this->permissions;
-        $mergedPermissions = $rolePermissions->merge($userPermissions);
+        $data = PermissionHelper::getModelAndKeyFromAbility($abilities);
+        $model = $data['model'];
+        $key = $data['key'];
 
-        return $mergedPermissions->unique();
+        if ($model === null || $key === null) {
+            return false;
+        }
+
+        return $this->permissions()
+                    ->where('model', ucfirst(strtolower($model)))
+                    ->where('key', strtolower($key))
+                    ->exists();
     }
 
     public function permissions(): BelongsToMany
+    {
+        $rolePermissions = $this->role->permissions();
+        $userPermissions = $this->userPermissions()->whereNotIn('id', $rolePermissions->pluck('id'));
+
+        return $rolePermissions->union($userPermissions);
+    }
+
+    public function userPermissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'user_permissions');
     }

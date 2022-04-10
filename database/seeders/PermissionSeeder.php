@@ -6,7 +6,6 @@ use App\Helpers\ClassHelper;
 use App\Interfaces\HasPermissions;
 use App\Models\Permission;
 use App\Models\Role;
-use App\Models\RolePermission;
 use Illuminate\Container\Container;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -45,14 +44,14 @@ class PermissionSeeder extends Seeder
                         $permission->refresh();
                     }
                     foreach ($roles as $role) {
-                        if (empty($cachedRoles[$role])) {
-                            $cachedRoles[$role] = Role::query()->where('title', $role)->first();
+                        /** @var Role $cachedRole */
+                        $cachedRole = $cachedRoles[$role] ?? null;
+                        if ($cachedRole === null) {
+                            $cachedRole = $cachedRoles[$role] = Role::query()->where('title', $role)->first();
                         }
-                        if (!RolePermission::query()->where('role_id', $cachedRoles[$role]->id)->where('permission_id', $permission->id)->exists()) {
-                            $rolePermission = new RolePermission();
-                            $rolePermission->role_id = $cachedRoles[$role]->id;
-                            $rolePermission->permission_id = $permission->id;
-                            $rolePermission->save();
+
+                        if ($cachedRole->permissions()->find($permission->id) === null) {
+                            $cachedRole->permissions()->save($permission);
                         }
                     }
                 }
