@@ -3,12 +3,13 @@
 namespace Database\Seeders;
 
 use App\Helpers\ClassHelper;
-use App\Interfaces\HasPermissions;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Traits\HasPermissions;
 use Illuminate\Container\Container;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class PermissionSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class PermissionSeeder extends Seeder
         $cachedRoles = [];
         $appNamespace = Container::getInstance()->getNamespace();
         $modelNamespace = 'Models';
+        $out = new ConsoleOutput();
 
         $models = collect(File::allFiles(app_path($modelNamespace)))->map(function ($item) use ($appNamespace, $modelNamespace) {
             $rel = $item->getRelativePathName();
@@ -32,11 +34,12 @@ class PermissionSeeder extends Seeder
         })->filter();
         foreach ($models as $modelClass) {
             $model = new $modelClass();
-            if ($model instanceof HasPermissions) {
+            if (ClassHelper::classHasTrait($model, HasPermissions::class)) {
                 $className = ClassHelper::getClassName($model);
                 foreach ($model::getRolePermissions() as $key => $roles) {
                     $permission = Permission::query()->where('model', $className)->where('key', $key)->first();
                     if ($permission === null) {
+                        $out->writeln('Creating ' . $key . ' permission for ' . $className . ' model.');
                         $permission = new Permission();
                         $permission->model = $className;
                         $permission->key = $key;
