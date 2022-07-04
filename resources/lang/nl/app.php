@@ -1,8 +1,11 @@
 <?php
 
 return [
+    'title' => [
+        'home' => 'Homepagina',
+    ],
     'message' => [
-        'welcome' => 'Welkom op de pagina',
+        'home' => '<p>Welkom op mijn homepagina</p>',
         'logged_in' => 'Je bent ingelogd',
         'users' => 'Hier zie je alle gebruikers',
     ],

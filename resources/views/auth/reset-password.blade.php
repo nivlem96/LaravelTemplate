@@ -1,9 +1,18 @@
 @extends('template.default')
 @section('content')
     <div @class(['content','password-reset'])>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{route('password.reset.post')}}" method="post">
             <input name="token" id="oken" type="hidden" value="{{$token}}">
-        @csrf <!-- {{ csrf_field() }} -->
+            @csrf <!-- {{ csrf_field() }} -->
             <table>
                 @error('token')
                 <tr>

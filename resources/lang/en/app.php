@@ -1,8 +1,11 @@
 <?php
 
 return [
+    'title' => [
+        'home' => 'Homepage',
+    ],
     'message' => [
-        'welcome' => 'Welcome to the page',
+        'home' => '<p>Welcome on my homepage</p>',
         'logged_in' => 'You are logged in',
         'users' => 'Here you can see all users',
     ],
