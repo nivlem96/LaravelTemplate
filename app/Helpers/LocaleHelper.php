@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class LanguageHelper
+class LocaleHelper
 {
     private static array $_supportedLanguages = [
         'nl',
@@ -12,5 +12,10 @@ class LanguageHelper
     static function getSupportedLanguages(): array
     {
         return self::$_supportedLanguages;
+    }
+
+    public static function getValutaIcon(): string
+    {
+        return '&euro;';
     }
 }

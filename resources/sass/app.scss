@@ -1,17 +1,113 @@
 @import "imports/import";
 
-.page {
-    .container {
-        .nav-bar {
-            .nav-bar-nav {
-                .nav-bar-item {
+html, body {
+    height: 100%;
+}
 
+body {
+    background-color: $color-background;
+}
+
+a {
+    color: $main_color;
+
+    &:hover {
+        color: $color-background;
+    }
+}
+
+.page {
+    position: absolute;
+    min-height: 100%;
+    padding-bottom: $footer-height;
+    width: 100%;
+
+
+    input:not([type=submit]), select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid $subtle_color;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    label {
+        padding: 12px 20px;
+        margin: 8px 0;
+    }
+
+    select {
+        background-color: $color-background;
+    }
+
+    input[type=submit] {
+        min-width: 100px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        background-color: $subtle_color;
+        border-color: $main_color;
+        border-radius: 10%;
+        border-width: 1px;
+    }
+
+    .header {
+        width: 100%;
+        padding: 10px 30px;
+        height: $header-height;
+        background-color: $subtle_color;
+
+        .logo {
+            width: $logo-size;
+            height: auto;
+        }
+
+        .nav-bar {
+            select {
+                margin: 0;
+            }
+
+            .nav-bar-nav {
+                size: 21px;
+                direction: rtl;
+                list-style: none;
+                margin-top: 27px;
+                display: flex;
+
+                .nav-item {
+                    justify-content: space-between;
+                    display: inline-block;
+                    height: 21px;
+                    line-height: 45px;
+                    padding: 0 10px;
+                    text-align: right;
                 }
             }
         }
+    }
+
+    .container {
 
         .content {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            a:hover {
+                color: $subtle_color;
+            }
 
         }
+    }
+
+    .footer {
+        height: $footer-height;
+        width: 100%;
+        position: absolute;
+        padding: 10px 30px;
+        left: 0;
+        bottom: 0;
+        background-color: $subtle_color;
     }
 }
