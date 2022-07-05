@@ -19,6 +19,8 @@ return [
         'dashboard' => 'Dashboard',
         'sign_out' => 'Uitloggen',
         'users' => 'Gebruikers',
+        'account' => 'Account',
+        'logs' => 'Logs',
     ],
     'label' => [
         'name' => 'Naam',

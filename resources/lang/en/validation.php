@@ -129,5 +129,12 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'password' => 'Password',
+        'code' => 'Code',
+        'file' => 'File',
+        'line' => 'Line',
+        'message' => 'Message',
+        'trace' => 'Stacktrace',
+        'created_at' => 'Created at',
+        'updated_at' => 'Created at',
     ],
 ];

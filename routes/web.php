@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
     Route::get('/signOut', [AuthenticatedController::class, 'signOut'])->name('signOut');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
-    
+    Route::get('/admin/logs', [AdminController::class, 'logs'])->name('logs');
+    Route::get('/admin/logs/{id}', [AdminController::class, 'log'])->name('log');
+
     Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
 });
