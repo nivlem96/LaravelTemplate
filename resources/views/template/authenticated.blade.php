@@ -4,6 +4,7 @@
 <body>
 <div @class(['page'])>
     @include('template.includes.header')
+    @include('template.includes.auth_menu')
     <div @class(['container'])>
         @yield('content')
     </div>
