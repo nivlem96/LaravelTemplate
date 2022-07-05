@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
             $log->message = $e->getMessage();
             $log->file = $e->getFile();
             $log->line = $e->getLine();
-            $log->trace = json_encode($e->getTrace());
+            $log->trace = $e->getTrace();
             $log->save();
         });
     }

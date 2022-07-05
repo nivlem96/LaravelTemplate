@@ -129,5 +129,12 @@ return [
         'name' => ' Naam',
         'email' => 'E-mail',
         'password' => 'Wachtwoord',
+        'code' => 'Code',
+        'file' => 'Bestand',
+        'line' => 'Lijn',
+        'message' => 'Bericht',
+        'trace' => 'Stacktrace',
+        'created_at' => 'Aangemaakt op',
+        'updated_at' => 'Aangepast op',
     ],
 ];

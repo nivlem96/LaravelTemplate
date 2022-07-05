@@ -18,9 +18,6 @@
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::user() !== null)
                         <li @class(['nav-item'])><a href="{{route('dashboard')}}">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
-                        @if(\Illuminate\Support\Facades\Auth::user()->can(['user',\App\Models\Permission::KEY_ACCESS_OTHER]))
-                            <li><a href="{{route('users')}}">@lang('app.page.users')</a></li>
-                        @endif
                         <li @class(['nav-item'])><a href="{{route('signOut')}}">@lang('app.page.sign_out')</a></li>
                     @else
                         <li @class(['nav-item'])><a href="{{route('login')}}">@lang('app.page.login')</a></li>

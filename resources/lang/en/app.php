@@ -19,6 +19,8 @@ return [
         'register' => 'Register',
         'sign_out' => 'Sign out',
         'users' => 'Users',
+        'account' => 'Account',
+        'logs' => 'Logs',
     ],
     'label' => [
         'name' => 'Name',

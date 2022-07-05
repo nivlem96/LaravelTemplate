@@ -29,6 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: $subtle_color;
     width: $auth_menu-width;
 
+    ul {
+        list-style: none;
+    }
+
     & + .container {
         margin-left: calc($auth_menu-width + 10px);
     }

@@ -8,7 +8,7 @@ use App\Models\User;
 use Ramsey\Collection\Collection;
 
 ?>
-@extends('template.default')
+@extends('template.authenticated')
 @section('content')
     <div @class(['content','users'])>
         <p>{{__('app.message.users')}}</p>
