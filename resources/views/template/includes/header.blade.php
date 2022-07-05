@@ -16,7 +16,7 @@
                             </select>
                         </form>
                     </li>
-                    @if(\Illuminate\Support\Facades\Auth::user() !== null)
+                    @if(auth()->hasUser())
                         <li @class(['nav-item'])><a href="{{route('dashboard')}}">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
                         <li @class(['nav-item'])><a href="{{route('signOut')}}">@lang('app.page.sign_out')</a></li>
                     @else
