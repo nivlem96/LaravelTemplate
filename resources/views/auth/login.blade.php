@@ -1,8 +1,17 @@
 @extends('template.default')
 @section('content')
     <div @class(['content','login'])>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{route('loginPost')}}" method="post">
-        @csrf <!-- {{ csrf_field() }} -->
+            @csrf <!-- {{ csrf_field() }} -->
             <table>
                 <tr>
                     <td><label for="email">@lang('app.label.email')</label></td>

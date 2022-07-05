@@ -16,6 +16,28 @@ a {
     }
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: $main_color;
+}
+
+.auth_menu {
+    padding-top: 10px;
+    top: $header-height;
+    left: 0;
+    position: absolute;
+    height: calc(100% - $header-height - $footer-height);
+    background-color: $subtle_color;
+    width: $auth_menu-width;
+
+    ul {
+        list-style: none;
+    }
+
+    & + .container {
+        margin-left: calc($auth_menu-width + 10px);
+    }
+}
+
 .page {
     position: absolute;
     min-height: 100%;
@@ -88,17 +110,14 @@ a {
         }
     }
 
-    .container {
+    .content {
+        padding-top: 10px;
+        padding-bottom: 10px;
 
-        .content {
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            a:hover {
-                color: $subtle_color;
-            }
-
+        a:hover {
+            color: $subtle_color;
         }
+
     }
 
     .footer {

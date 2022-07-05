@@ -122,6 +122,19 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes' => [],
-
+    'errors' => [
+        'user_creation_failed' => 'Could not create user.',
+    ],
+    'attributes' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'password' => 'Password',
+        'code' => 'Code',
+        'file' => 'File',
+        'line' => 'Line',
+        'message' => 'Message',
+        'trace' => 'Stacktrace',
+        'created_at' => 'Created at',
+        'updated_at' => 'Created at',
+    ],
 ];
