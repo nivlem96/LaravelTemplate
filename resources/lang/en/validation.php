@@ -136,5 +136,10 @@ return [
         'trace' => 'Stacktrace',
         'created_at' => 'Created at',
         'updated_at' => 'Created at',
+        'size' => 'Size',
+        'height' => 'Height',
+        'width' => 'Width',
+        'image' => 'Image',
+        'dimensions' => 'Dimensions',
     ],
 ];

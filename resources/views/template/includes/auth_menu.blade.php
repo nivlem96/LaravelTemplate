@@ -10,6 +10,9 @@
             @if(auth()->user()->can(['Log',\App\Models\Permission::KEY_ACCESS]))
                 <li><a href="{{route('logs')}}">{{__('app.page.logs')}}</a></li>
             @endif
+            @if(auth()->user()->can(['Image',\App\Models\Permission::KEY_ACCESS]))
+                <li><a href="{{route('images')}}">{{__('app.page.images')}}</a></li>
+            @endif
         </ul>
     @endif
 </div>
