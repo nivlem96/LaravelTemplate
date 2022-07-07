@@ -11,5 +11,6 @@ class ImageObserver
         foreach ($image->children as $child) {
             $child->delete();
         }
+        unlink($image->path);
     }
 }

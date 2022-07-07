@@ -136,5 +136,10 @@ return [
         'trace' => 'Stacktrace',
         'created_at' => 'Aangemaakt op',
         'updated_at' => 'Aangepast op',
+        'size' => 'Grootte',
+        'height' => 'Hoogte',
+        'width' => 'Breedte',
+        'image' => 'Afbeelding',
+        'dimensions' => 'Dimensies',
     ],
 ];

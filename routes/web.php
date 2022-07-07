@@ -47,7 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/images', [AdminController::class, 'images'])->name('images');
     Route::get('/admin/images/{id}', [ImageController::class, 'image'])->name('image');
 
-    Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/delete/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/delete/image/{id}', [ImageController::class, 'deleteImage'])->name('deleteImage');
 
     Route::post('/image', [ImageController::class, 'postImage'])->name('postImage');
 });

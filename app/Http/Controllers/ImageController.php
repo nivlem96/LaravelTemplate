@@ -23,4 +23,12 @@ class ImageController extends Controller
     {
         return $request->postImage();
     }
+
+    public function deleteImage($id)
+    {
+        $image = Image::query()->findOrFail($id);
+        $image->delete();
+
+        return redirect(route('images'));
+    }
 }

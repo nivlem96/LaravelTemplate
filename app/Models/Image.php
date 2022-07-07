@@ -85,9 +85,8 @@ class Image extends Model
         $img->resize($w, $h, function ($constraint) {
             $constraint->aspectRatio();
         })->save($resizedImage->path);
-        $pathInfo = pathinfo($resizedImage->path);
 
-        $resizedImage->size = $pathInfo['filesize'];
+        $resizedImage->size = filesize($resizedImage->path);
         $resizedImage->saveOrFail();
 
         return $resizedImage;

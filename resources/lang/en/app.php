@@ -21,6 +21,7 @@ return [
         'users' => 'Users',
         'account' => 'Account',
         'logs' => 'Logs',
+        'images' => 'Images',
     ],
     'label' => [
         'name' => 'Name',
@@ -35,4 +36,5 @@ return [
     'action' => [
         'delete' => 'Delete',
     ],
+    'actions' => 'Actions',
 ];

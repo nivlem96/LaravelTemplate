@@ -21,6 +21,7 @@ return [
         'users' => 'Gebruikers',
         'account' => 'Account',
         'logs' => 'Logs',
+        'images' => 'Afbeeldingen',
     ],
     'label' => [
         'name' => 'Naam',
@@ -35,4 +36,5 @@ return [
     'action' => [
         'delete' => 'Verwijderen',
     ],
+    'actions' => 'Acties',
 ];

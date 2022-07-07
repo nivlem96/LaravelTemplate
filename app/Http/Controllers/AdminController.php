@@ -51,7 +51,7 @@ class AdminController extends Controller
         }
 
         return view('admin.images', [
-            'images' => Image::query()->orderBy('created_at', 'desc')->get(),
+            'images' => Image::query()->orderBy('created_at', 'desc')->whereNull('parent_id')->get(),
         ]);
     }
 }
