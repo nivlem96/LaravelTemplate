@@ -9,7 +9,7 @@ class AuthenticatedController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboard');
+        return view('auth.dashboard');
     }
 
 

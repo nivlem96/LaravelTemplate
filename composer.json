@@ -9,8 +9,11 @@
     "license": "MIT",
     "require": {
         "php": "8.1.*",
+        "ext-exif": "*",
+        "ext-gd": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5"

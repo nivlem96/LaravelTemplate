@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\PermissionHelper;
-use App\Interfaces\HasPermissions;
+use App\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,9 +22,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property-read Collection|Permission[] $permissions
  * @property-read Collection|Permission[] $userPermissions
  */
-class User extends Authenticatable implements HasPermissions
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasPermissions {
+        getRolePermissions as public traitRolePermissions;
+    }
 
     const PASSWORD_MIN_LENGTH = 6;
 
@@ -60,14 +62,15 @@ class User extends Authenticatable implements HasPermissions
 
     public static function getRolePermissions(): array
     {
-        return [
-            Permission::KEY_ACCESS => Role::getAllRoles(),
-            Permission::KEY_ACCESS_OTHER => [Role::ROLE_ADMIN],
-            Permission::KEY_UPDATE => Role::getAllRoles(),
-            Permission::KEY_UPDATE_OTHER => [Role::ROLE_ADMIN],
-            Permission::KEY_DELETE => Role::getAllRoles(),
-            Permission::KEY_DELETE_OTHER => [Role::ROLE_ADMIN],
-        ];
+        return array_merge(self::traitRolePermissions(),
+            [
+                Permission::KEY_ACCESS_OTHER => [Role::ROLE_ADMIN],
+                Permission::KEY_UPDATE => Role::getAllRoles(),
+                Permission::KEY_UPDATE_OTHER => [Role::ROLE_ADMIN],
+                Permission::KEY_DELETE => Role::getAllRoles(),
+                Permission::KEY_DELETE_OTHER => [Role::ROLE_ADMIN],
+            ]
+        );
     }
 
     public function role(): BelongsTo

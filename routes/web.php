@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\AuthenticatedController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
     Route::get('/signOut', [AuthenticatedController::class, 'signOut'])->name('signOut');
     Route::get('/users', [AdminController::class, 'users'])->name('users');
-    
-    Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/admin/logs', [AdminController::class, 'logs'])->name('logs');
+    Route::get('/admin/logs/{id}', [AdminController::class, 'log'])->name('log');
+    Route::get('/admin/images', [AdminController::class, 'images'])->name('images');
+    Route::get('/admin/images/{id}', [ImageController::class, 'image'])->name('image');
+
+    Route::get('/delete/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/delete/image/{id}', [ImageController::class, 'deleteImage'])->name('deleteImage');
+
+    Route::post('/image', [ImageController::class, 'postImage'])->name('postImage');
 });
