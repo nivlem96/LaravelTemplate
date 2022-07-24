@@ -1,4 +1,4 @@
-php artisan down || true
+php artisan down --render=errors.maintenance || true
 git pull
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 php artisan migrate --force

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\ClassHelper;
 use App\Models\Image;
 use App\Models\Log;
+use App\Models\PageView;
 use App\Models\Permission;
 use App\Models\User;
 
@@ -52,6 +53,17 @@ class AdminController extends Controller
 
         return view('admin.images', [
             'images' => Image::query()->orderBy('created_at', 'desc')->whereNull('parent_id')->get(),
+        ]);
+    }
+
+    public function pageViews()
+    {
+        if (!$this->authUser->can(['PageView', Permission::KEY_ACCESS])) {
+            abort(404);
+        }
+
+        return view('admin.pageViews', [
+            'pageViews' => PageView::query()->orderBy('created_at', 'desc')->paginate(10),
         ]);
     }
 }

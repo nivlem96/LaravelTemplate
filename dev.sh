@@ -1,4 +1,4 @@
-php artisan down || true
+php artisan down --render=errors.maintenance || true
 composer update
 php artisan migrate --force
 php artisan db:seed --force
