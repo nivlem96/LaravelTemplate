@@ -22,6 +22,7 @@ return [
         'account' => 'Account',
         'logs' => 'Logs',
         'images' => 'Afbeeldingen',
+        'page_views' => 'Pagina weergaven',
     ],
     'label' => [
         'name' => 'Naam',
@@ -37,4 +38,18 @@ return [
         'delete' => 'Verwijderen',
     ],
     'actions' => 'Acties',
+    'page_views' => [
+        'label' => [
+            'unique' => [
+                'day' => 'Unieke bezoekers in de laatste 24 uur',
+                'week' => 'Unieke bezoekers in de laatste 7 dagen',
+                'month' => 'Unieke bezoekers in de laatste 31 dagen',
+            ],
+            'total' => [
+                'day' => 'Totale bezoekers in de laatste 24 uur',
+                'week' => 'Totale bezoekers in de laatste 7 dagen',
+                'month' => 'Totale bezoekers in de laatste 31 dagen',
+            ],
+        ],
+    ],
 ];

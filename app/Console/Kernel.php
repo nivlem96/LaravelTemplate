@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('auth:clear-resets')->everyFifteenMinutes();
+        $schedule->command('auth:clear-resets')->everyFifteenMinutes()->withoutOverlapping();
+        $schedule->command('clear:page-views')->dailyAt('2:00')->withoutOverlapping();
     }
 
     /**

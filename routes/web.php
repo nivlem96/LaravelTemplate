@@ -39,16 +39,17 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
+    Route::get('/account', [AuthenticatedController::class, 'dashboard'])->name('dashboard');
     Route::get('/signOut', [AuthenticatedController::class, 'signOut'])->name('signOut');
-    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
     Route::get('/admin/logs', [AdminController::class, 'logs'])->name('logs');
     Route::get('/admin/logs/{id}', [AdminController::class, 'log'])->name('log');
     Route::get('/admin/images', [AdminController::class, 'images'])->name('images');
     Route::get('/admin/images/{id}', [ImageController::class, 'image'])->name('image');
+    Route::get('/admin/page_views', [AdminController::class, 'pageViews'])->name('adminPageViews');
 
-    Route::get('/delete/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
-    Route::get('/delete/image/{id}', [ImageController::class, 'deleteImage'])->name('deleteImage');
+    Route::get('/admin/delete/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/admin/delete/image/{id}', [ImageController::class, 'deleteImage'])->name('deleteImage');
 
-    Route::post('/image', [ImageController::class, 'postImage'])->name('postImage');
+    Route::post('/admin/image', [ImageController::class, 'postImage'])->name('postImage');
 });

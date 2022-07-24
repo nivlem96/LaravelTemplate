@@ -12,13 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('page_views', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoIncrement();
-            $table->string('code');
-            $table->text('message');
-            $table->string('file');
-            $table->string('line');
-            $table->text('trace');
+            $table->string('ip');
+            $table->text('user_agent');
+            $table->string('uri');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('page_views');
     }
 };

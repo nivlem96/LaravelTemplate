@@ -141,5 +141,8 @@ return [
         'width' => 'Breedte',
         'image' => 'Afbeelding',
         'dimensions' => 'Dimensies',
+        'ip' => 'IP',
+        'user_agent' => 'User agent',
+        'uri' => 'URI',
     ],
 ];
