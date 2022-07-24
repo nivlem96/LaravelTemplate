@@ -22,6 +22,7 @@ return [
         'account' => 'Account',
         'logs' => 'Logs',
         'images' => 'Images',
+        'page_views' => 'Page views',
     ],
     'label' => [
         'name' => 'Name',
@@ -37,4 +38,18 @@ return [
         'delete' => 'Delete',
     ],
     'actions' => 'Actions',
+    'page_views' => [
+        'label' => [
+            'unique' => [
+                'day' => 'Unique visitors in the last 24 hours',
+                'week' => 'Unique visitors in the last 7 days',
+                'month' => 'Unique visitors in the last 31 days',
+            ],
+            'total' => [
+                'day' => 'Total visitors in the last 24 hours',
+                'week' => 'Total visitors in the last 7 days',
+                'month' => 'Total visitors in the last 31 days',
+            ],
+        ],
+    ],
 ];

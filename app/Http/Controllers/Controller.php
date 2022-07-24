@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PageView;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -25,6 +26,7 @@ class Controller extends BaseController
      */
     public function callAction($method, $parameters)
     {
+        PageView::create(request());
         $sessionLocale = session('app.locale');
         if ($sessionLocale !== null && app()->getLocale() !== $sessionLocale) {
             app()->setLocale($sessionLocale);
